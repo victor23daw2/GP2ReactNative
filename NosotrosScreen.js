@@ -7,11 +7,7 @@ export default function NosotrosScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.titleContainer}>
-            <Text style={styles.title}>¡Bienvenido a la pantalla de Nosotros!</Text>
-            <Button
-            onPress={() => navigation.navigate('Preguntas')} // Botón para ir a preguntas, la siguiente página
-            title="Ir a Preguntas"
-            />
+            <Text style={styles.title}>¡Este es nuestro equipo!</Text>
         </View>
 
         {/* Estructura HTML de los desarrolladores */}
@@ -78,6 +74,12 @@ export default function NosotrosScreen({ navigation }) {
             <Text>Contacta</Text>
             </TouchableOpacity>
         </View>
+        <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => navigation.navigate("Preguntas")}
+          title="Ir a Preguntas"
+        />
+      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -155,4 +157,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
   },
+  buttonContainer: {  
+    marginBottom: 20,
+    marginTop: 10,
+  }
 });
