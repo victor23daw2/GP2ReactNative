@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Button, Image, TouchableOpacity, SafeAreaView, ScrollView, StyleSheet, Linking } from 'react-native';
 
 export default function NosotrosScreen({ navigation }) {
-    
+  const handleContactPress = () => {
+    Linking.openURL(`tel:${666}`); 
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -32,8 +35,8 @@ export default function NosotrosScreen({ navigation }) {
             <Text style={styles.description}>
             Romá Sardà es un desarrollador front-end con una pasión por crear interfaces de usuario intuitivas y experiencias digitales memorables.
             </Text>
-            <TouchableOpacity style={styles.button}>
-            <Text>Contacta</Text>
+            <TouchableOpacity style={styles.button} onPress={handleContactPress}>
+            <Text >Contacta</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.card}>
@@ -53,7 +56,7 @@ export default function NosotrosScreen({ navigation }) {
             <Text style={styles.description}>
             Alejandro Torrente es un innovador desarrollador front-end que combina creatividad y técnica para construir soluciones web de vanguardia.
             </Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={handleContactPress}>
             <Text>Contacta</Text>
             </TouchableOpacity>
         </View>
@@ -74,7 +77,7 @@ export default function NosotrosScreen({ navigation }) {
             <Text style={styles.description}>
             Victor Toro destaca en el campo del desarrollo front-end por su enfoque meticuloso y su compromiso con la excelencia en el diseño web.
             </Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={handleContactPress}>
             <Text>Contacta</Text>
             </TouchableOpacity>
         </View>
