@@ -12,8 +12,6 @@ export default function NosotrosScreen({ navigation }) {
         <View style={styles.titleContainer}>
             <Text style={styles.title}>¡Este es nuestro equipo!</Text>
         </View>
-
-        {/* Estructura HTML de los desarrolladores */}
         <View style={styles.card}>
             {/* Romà Sardá */}
             <View style={styles.personCard}>
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     marginBottom: 10,
-    width: '90%', // Ajusta el ancho de las tarjetas al 90% del contenedor
+    width: '90%', 
   },
   personCard: {
     flexDirection: 'row',
@@ -130,7 +128,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'gray', // Color de fondo del avatar
+    backgroundColor: 'gray',
   },
   details: {
     marginLeft: 10,
