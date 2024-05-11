@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Button,
-  FlatList,
-  estilsheet,
-  StyleSheet,
-} from "react-native";
+import { View, Text, Button, FlatList, StyleSheet } from "react-native";
 import * as SQLite from "expo-sqlite";
+import { ScrollView } from "react-native-gesture-handler";
 
 // This three modules are for reading the csv.
 import Papa from "papaparse";
 import { Asset } from "expo-asset";
 import { readAsStringAsync } from "expo-file-system";
-import { ScrollView } from "react-native-gesture-handler";
 
 const InsertarDatosCSV = async () => {
   const db = SQLite.openDatabase("guerrasGP2.db");
@@ -81,12 +74,8 @@ export default DatosGuerraScreen = ({ navigation }) => {
             // console.log(JSON.stringify(rows));
             const data = rows._array;
             setDadesDaula(data);
-
-            // setDadesDaula((dadesTaula = [...dadesTaula, JSON.stringify(rows)]));
           } else {
-            setDadesDaula(
-              (dadesTaula = [...dadesTaula, "La taula esta buida."])
-            );
+            setDadesDaula("La taula esta buida.");
           }
         });
       } catch (error) {
@@ -104,12 +93,7 @@ export default DatosGuerraScreen = ({ navigation }) => {
           "DELETE FROM guerrasGP2",
           [],
           (_, { rows }) => console.log(JSON.stringify(rows)),
-          setDadesDaula(
-            (dadesTaula = [
-              ...dadesTaula,
-              "Totes les dades han estat borrades de la taula.",
-            ])
-          )
+          setDadesDaula("Totes les dades han estat borrades de la taula.")
         );
       } catch (error) {
         console.log(error);
@@ -154,7 +138,6 @@ export default DatosGuerraScreen = ({ navigation }) => {
         </View>
 
         <Button
-          style={estils.boto}
           onPress={() => navigation.navigate("Inicio")}
           title="Ir a Inicio"
         />
@@ -185,8 +168,5 @@ const estils = StyleSheet.create({
     flex: 1,
     padding: 5,
     textAlign: "center",
-  },
-  boto: {
-    marginTop: 30,
   },
 });
