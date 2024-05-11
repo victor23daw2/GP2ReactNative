@@ -19,7 +19,7 @@ const InsertarDatosCSV = async () => {
     try {
       tx.executeSql(
         // The name of the table is guerras.
-        "CREATE TABLE IF NOT EXISTS guerrasGP2 (conflict_id INTEGER PRIMARY KEY NOT NULL, location TEXT, side_a TEXT, side_a_id TEXT, side_a_2nd TEXT, side_b TEXT, side_b_id TEXT, side_b_2nd TEXT, incompatibility INTEGER, territory_name TEXT, year INTEGER, intensity_level INTEGER, cumulative_intensity INTEGER, type_of_conflict INTEGER, start_date TEXT, start_prec INTEGER, start_date2 TEXT, start_prec2 INTEGER, ep_end INTEGER, ep_end_date TEXT, ep_end_prec TEXT, gwno_a TEXT, gwno_a_2nd TEXT, gwno_b TEXT, gwno_b_2nd TEXT, gwno_loc TEXT, region TEXT, version INTEGER)"
+        "CREATE TABLE IF NOT EXISTS guerrasGP2 (conflict_id INTEGER, location TEXT, side_a TEXT, side_a_id TEXT, side_a_2nd TEXT, side_b TEXT, side_b_id TEXT, side_b_2nd TEXT, incompatibility INTEGER, territory_name TEXT, year INTEGER, intensity_level INTEGER, cumulative_intensity INTEGER, type_of_conflict INTEGER, start_date TEXT, start_prec INTEGER, start_date2 TEXT, start_prec2 INTEGER, ep_end INTEGER, ep_end_date TEXT, ep_end_prec TEXT, gwno_a TEXT, gwno_a_2nd TEXT, gwno_b TEXT, gwno_b_2nd TEXT, gwno_loc TEXT, region TEXT, version INTEGER)"
       );
     } catch (error) {
       console.log(error);
