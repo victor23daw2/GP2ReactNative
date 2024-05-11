@@ -12,6 +12,7 @@
     "@expo/metro-config": "^0.18.3",
     "@react-navigation/drawer": "^6.6.15",
     "drawer": "^0.0.2",
+
     "expo": "^51.0.2",
     "expo-asset": "^10.0.6",
     "expo-camera": "15.0.6",
@@ -20,6 +21,7 @@
     "expo-sqlite": "^14.0.3",
     "expo-status-bar": "^1.12.1",
     "native": "^0.3.3",
+    "papaparse": "^5.4.1",
     "react": "18.2.0",
     "react-native": "^0.74.1",
     "react-native-gesture-handler": "^2.16.2",
