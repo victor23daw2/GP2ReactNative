@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { View, Text, Button } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  estilsheet,
+  StyleSheet,
+} from "react-native";
 import * as SQLite from "expo-sqlite";
 
 // This three modules are for reading the csv.
 import Papa from "papaparse";
 import { Asset } from "expo-asset";
 import { readAsStringAsync } from "expo-file-system";
+import { ScrollView } from "react-native-gesture-handler";
 
 const InsertarDatosCSV = async () => {
   const db = SQLite.openDatabase("guerrasGP2.db");
@@ -65,14 +73,16 @@ export default DatosGuerraScreen = ({ navigation }) => {
   let mostrarDades = () => {
     db.transaction((tx) => {
       try {
-        console.log("Dades de la taula:");
+        // console.log("Dades de la taula:");
         tx.executeSql("SELECT * FROM guerrasGP2", [], (_, { rows }) => {
           // Here I have 24 as it's the default size of rows when it's empty, can be checked with: JSON.stringify(rows).length.
-          console.log(JSON.stringify(rows).length);
+          // console.log(JSON.stringify(rows).length);
           if (JSON.stringify(rows).length > 24) {
-            console.log(JSON.stringify(rows));
+            // console.log(JSON.stringify(rows));
+            const data = rows._array;
+            setDadesDaula(data);
 
-            setDadesDaula((dadesTaula = [...dadesTaula, JSON.stringify(rows)]));
+            // setDadesDaula((dadesTaula = [...dadesTaula, JSON.stringify(rows)]));
           } else {
             setDadesDaula(
               (dadesTaula = [...dadesTaula, "La taula esta buida."])
@@ -108,33 +118,75 @@ export default DatosGuerraScreen = ({ navigation }) => {
     });
   };
 
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>¡Bienvenido a la pantalla de Guerra!</Text>
-
-      <View>
-        {dadesTaula.map(
-          (item, index) => (
-            <Text key={index}>{item}</Text>
-          ),
-
-          // Clear the previous state.
-          (dadesTaula = "")
-        )}
-      </View>
-
-      <View>
-        <Button title="Insertar dades CSV" onPress={InsertarDatosCSV}></Button>
-
-        <Button title="Mostrar dades" onPress={mostrarDades}></Button>
-
-        <Button title="Borrar taula" onPress={borrarDades}></Button>
-      </View>
-
-      <Button
-        onPress={() => navigation.navigate("Inicio")} // boton para ir a Inicio, la siguiente pagina"
-        title="Ir a Inicio"
-      />
+  // This is a function that renders each row of the table.
+  const mostrarFila = ({ item }) => (
+    <View style={estils.row}>
+      {Object.values(item).map((value, index) => (
+        <Text key={index} style={[estils.cell, { flex: null }]}>
+          {value}
+        </Text>
+      ))}
     </View>
   );
+
+  return (
+    // Here I show the data when the screen is rendered.
+    mostrarDades(),
+    (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Datos sobre guerras!</Text>
+
+        <ScrollView horizontal style={estils.flatList}>
+          <FlatList
+            data={dadesTaula}
+            renderItem={mostrarFila}
+            keyExtractor={(item, index) => index.toString()}
+            // style={estils.flatList}
+          />
+        </ScrollView>
+
+        <View>
+          {/* <Button title="Insertar dades CSV" onPress={InsertarDatosCSV}></Button> */}
+
+          {/* <Button title="Mostrar dades" onPress={mostrarDades}></Button> */}
+
+          {/* <Button title="Borrar taula" onPress={borrarDades}></Button> */}
+        </View>
+
+        <Button
+          style={estils.boto}
+          onPress={() => navigation.navigate("Inicio")}
+          title="Ir a Inicio"
+        />
+      </View>
+    )
+  );
 };
+
+const estils = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+  },
+  flatList: {
+    width: "90%",
+    marginTop: 30,
+    marginBottom: 30,
+  },
+  row: {
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+    paddingVertical: 10,
+  },
+  cell: {
+    flex: 1,
+    padding: 5,
+    textAlign: "center",
+  },
+  boto: {
+    marginTop: 30,
+  },
+});
