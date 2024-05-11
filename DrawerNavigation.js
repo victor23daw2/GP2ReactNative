@@ -5,7 +5,7 @@ import InicioScreen from './InicioScreen';
 import NosotrosScreen from './NosotrosScreen';
 import PreguntasScreen from './PreguntasScreen';
 import ContactosScreen from './ContactosScreen';
-
+import { CamaraScreen } from './CamaraScreen';
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigation() {
@@ -16,6 +16,7 @@ export default function DrawerNavigation() {
         <Drawer.Screen name="Nosotros" component={NosotrosScreen} />
         <Drawer.Screen name="Preguntas" component={PreguntasScreen} />
         <Drawer.Screen name="Contactos" component={ContactosScreen} />
+        <Drawer.Screen name="Camara" component={CamaraScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
