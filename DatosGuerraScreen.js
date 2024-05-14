@@ -70,7 +70,7 @@ export default DatosGuerraScreen = ({ navigation }) => {
         tx.executeSql("SELECT * FROM guerrasGP2", [], (_, { rows }) => {
           // Here I have 24 as it's the default size of rows when it's empty, can be checked with: JSON.stringify(rows).length.
           // console.log(JSON.stringify(rows).length);
-          if (JSON.stringify(rows).length > 24) {
+          if (JSON.stringify(rows).length > 10) {
             // console.log(JSON.stringify(rows));
             const data = rows._array;
             setDadesDaula(data);
@@ -130,7 +130,7 @@ export default DatosGuerraScreen = ({ navigation }) => {
         </ScrollView>
 
         <View>
-          {/* <Button title="Insertar dades CSV" onPress={InsertarDatosCSV}></Button> */}
+          <Button title="Insertar dades CSV" onPress={InsertarDatosCSV}></Button>
 
           {/* <Button title="Mostrar dades" onPress={mostrarDades}></Button> */}
 
@@ -138,8 +138,8 @@ export default DatosGuerraScreen = ({ navigation }) => {
         </View>
 
         <Button
-          onPress={() => navigation.navigate("Inicio")}
-          title="Ir a Inicio"
+          onPress={() => navigation.navigate("Camara")}
+          title="Ir a Camara"
         />
       </View>
     )

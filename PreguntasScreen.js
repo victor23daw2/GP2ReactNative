@@ -53,8 +53,8 @@ const PreguntasScreen = ({ navigation }) => {
 
       <View style={styles.buttonContainer}>
         <Button
-          onPress={() => navigation.navigate("Contactos")}
-          title="Ir a Contactos"
+          onPress={() => navigation.navigate("Datos guerra")}
+          title="Ir a Datos Guerra"
         />
       </View>
     </ScrollView>

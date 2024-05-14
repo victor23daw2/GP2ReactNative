@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import InicioScreen from "./InicioScreen";
 import NosotrosScreen from "./NosotrosScreen";
 import PreguntasScreen from "./PreguntasScreen";
-import ContactosScreen from "./ContactosScreen";
 import DatosGuerraScreen from "./DatosGuerraScreen";
 import { CamaraScreen } from './CamaraScreen';
 
@@ -19,7 +18,6 @@ export default function DrawerNavigation() {
         <Drawer.Screen name="Inicio" component={InicioScreen} />
         <Drawer.Screen name="Nosotros" component={NosotrosScreen} />
         <Drawer.Screen name="Preguntas" component={PreguntasScreen} />
-        <Drawer.Screen name="Contactos" component={ContactosScreen} />
         <Drawer.Screen name="Datos guerra" component={DatosGuerraScreen} />
         <Drawer.Screen name="Camara" component={CamaraScreen} />
       </Drawer.Navigator>
